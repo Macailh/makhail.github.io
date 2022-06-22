@@ -1,7 +1,7 @@
 ---
 layout: post
-title: 'H2O-ac theme for Jekyll'
-subtitle: '基于或许是最漂亮的 Jekyll 主题 H2O 的学术版'
+title: 'Hello, my name is Salvador German.'
+subtitle: 'If you want to know more about me, keep reading...'
 date: 2021-12-22 19:50:00 +0800
 categories: tech
 author: zhonger
