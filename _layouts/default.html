@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="{{site.language}}">
+{% include head.html %}
+
+{% if site.prism.line_numbers %}
+<body class="line-numbers" ontouchstart="">
+{% else %}
+<body ontouchstart="">
+{% endif %}
+
+    <!--[if lt IE 10]>
+    <div class="alert-danger" role="alert">你的浏览器实在太太太旧了，放学别走，升级完浏览器再说！<a target="_blank" class="alert-link" href="http://browsehappy.com">立即升级</a></div>
+    <![endif]-->
+    {% if site.gray %}
+    <div id=all class="gray">
+    {% else %}
+    <div id="all">
+    {% endif %}
+      <input id="nm-switch" type="hidden" value="{{ site.nightMode }}">
+      <div class="visible">
+        {{ content }}
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="{{ "/assets/js/index.min.js" | prepend: site.baseurl }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" async></script>
+    <script src="https://at.alicdn.com/t/font_3046306_skfh9jzzbbf.js"></script>
+    {% include analytics.html %}
+    {% include umami.html %}
+    {% include busuanzi.html %}
+    {% include pwa.html %}
+    {% if site.mathjax %}
+    {% include mathjax.html %}
+    {% endif %}
+</body>
+</html>

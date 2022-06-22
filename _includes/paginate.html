@@ -1,0 +1,41 @@
+{% assign pin_posts = site.posts | where: "pin", "true" | sort: "date" | reverse %}
+{% assign unpin_posts = site.posts | where: "pin", nil | sort: "date" | reverse %}
+{% assign pin_posts_num = pin_posts | size %}
+{% assign unpin_posts_num = unpin_posts | size %}
+{% assign page_num = paginator.page %}
+{% assign min_num = page_num | minus: 1 | times: site.pagination.per_page %}
+{% assign max_num = page_num | times: site.pagination.per_page %}
+
+{% if pin_posts_num <= min_num %}
+    {% assign unpin_start = min_num | minus: pin_posts_num %}
+    {% if unpin_posts_num < max_num%}
+        {% assign unpin_end = unpin_posts_num | minus: 1 %}
+    {% else %}
+        {% assign unpin_end = max_num | minus: 2 %}
+    {% endif %}
+    {% for i in (unpin_start..unpin_end) %}
+        {% assign post = unpin_posts[i] %}
+        {% include paginate-article.html %}
+    {% endfor %}
+{% elsif pin_posts_num < max_num %}
+    {% assign pin_end = pin_posts_num | minus: 1 %}
+    {% for i in (min_num..pin_end) %}
+        {% assign post = pin_posts[i] %}
+        {% include paginate-article.html %}
+    {% endfor %}
+    {% assign unpin_end = max_num | minus: pin_posts_num | minus: 1 %}
+    {% if unpin_end >= unpin_posts_num %}
+        {% assign unpin_end = unpin_posts_num | minus: 1 %}
+    {% endif %}
+    {% for i in (0..unpin_end) %}
+        {% assign post = unpin_posts[i] %}
+        {% include paginate-article.html %}
+    {% endfor %}
+{% else %}
+    {% assign pin_start = min_num %}
+    {% assign pin_end = max_num | minus: 1 %}
+    {% for i in (pin_start..pin_end) %}
+        {% assign post = pin_posts[i] %}
+        {% include paginate-article.html %}
+    {% endfor %}
+{% endif %}

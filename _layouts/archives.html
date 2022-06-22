@@ -1,0 +1,80 @@
+---
+layout: page
+home-title: Welcome to zhonger's blog!
+description: Writing, writing, writing ...
+permalink: /archives.html
+cover: https://images.unsplash.com/photo-1465189684280-6a8fa9b19a7a?w=1600&q=900
+---
+
+{% assign pin_posts = site.posts | where: "pin", "true" | sort: "date" | reverse %}
+{% assign unpin_posts = site.posts | where: "pin", nil | sort: "date" | reverse %}
+{% assign pin_posts_num = pin_posts | size %}
+{% assign unpin_posts_num = unpin_posts | size %}
+{% assign nyear = "1900" %}
+
+<h2>Archives</h2>
+
+<p>本站共有 {{ site.posts | size }} 篇文章{% if pin_posts_num > 0 %}，其中有 {{pin_posts_num}} 篇置顶文章{% endif %}</p>
+
+{% assign ssyears = "rat,ox,tiger,rabbit,dragon,snake,horse,goat,monkey,rooster,dog,pig" | split: "," %}
+
+{% if pin_posts_num > 0 %}
+<h3>置顶文章</h3>
+<ul>
+  {% for post in pin_posts %}
+    <li>
+      <p class="archives-title">
+        <span class="archives-date">
+          {% case site.formats.time %}
+          {% when 0 %}
+            {{ post.date | date: "%Y-%m-%d" }} 
+          {% when 1 %}
+            {{ post.date | date_to_string }}
+          {% else %}
+            {{ post.date | date: "%Y年%-m月%-d日"  }}
+          {% endcase %}
+        </span>
+        <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.title }} </a>
+      </p>
+    </li>
+  {% endfor %}
+{% endif %}
+
+{% if unpin_posts_num > 0%}
+  {% for post in unpin_posts %}
+    {% assign year = post.date | date: '%Y' %}
+    {% assign animal = year | minus:1900 | modulo:12 %}
+    {% if year != nyear %}
+      {% assign nyear = year %}
+      </ul>
+      <h3 class="year">{{ post.date | date: '%Y' }}
+        <span class="icon-item">
+          <svg class="icon animal" aria-hidden="true">
+            <use xlink:href="#icon-{{ ssyears[animal] }}"></use>
+          </svg>
+          <svg class="icon dz" aria-hidden="true">
+            <use xlink:href="#icon-{{ ssyears[animal]}}_dz"></use>
+          </svg>
+        </span>
+      </h3>
+      <ul>
+    {% endif %}
+
+    <li>
+      <p class="archives-title">
+        <span class="archives-date">
+          {% case site.formats.time %}
+          {% when 0 %}
+            {{ post.date | date: "%Y-%m-%d" }} 
+          {% when 1 %}
+            {{ post.date | date_to_string }}
+          {% else %}
+            {{ post.date | date: "%Y年%-m月%-d日"  }}
+          {% endcase %}
+        </span>
+        <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.title }} </a>
+      </p>
+    </li>
+  {% endfor %}
+{% endif %}
+</ul>

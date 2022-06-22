@@ -1,0 +1,56 @@
+<footer class="g-footer">
+  <section>{{ site.title }} ©
+  {% assign current = "now" | date: "%Y" | plus: 0%}
+  {% unless site.footer.since and site.footer.since == current %}
+    {{ site.footer.since }}
+    -
+  {% endunless %}
+  {{ current }}
+  {% if site.beian %}
+    <a href="https://beian.miit.gov.cn/" target="_blank">{{ site.beian }}</a>
+  {% endif %}
+  </section>
+  <section>Powered by <a href="//jekyllrb.com">Jekyll</a> & <a href="https://github.com/zhonger/jekyll-theme-H2O-ac">H2O-ac</a> {% if site.version %}v{{ site.version }} {% endif %} (based on <a href="https://github.com/kaeyleo/jekyll-theme-H2O">H2O</a>) {% if site.supports.webify %} & <a href="https://webify.cloudbase.net/" target="_blank">CloudBase Webify</a> {% endif %}
+  {% if site.cnzz %}
+  <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_{{ site.cnzz }}'%3E%3C/span%3E%3Cscript src='https://v1.cnzz.com/z_stat.php%3Fid%3D{{ site.cnzz }}%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+  {% endif %}
+  </section>
+  {% if site.busuanzi %}
+  <section>
+    <span id="busuanzi_container_site_pv">
+      👁️ Total Views <span id="busuanzi_value_site_pv"></span> <b>·</b>
+    </span>
+    <span id="busuanzi_container_site_uv">
+      👤 Total Visitors <span id="busuanzi_value_site_uv"></span>
+    </span>
+  </section>
+  {% endif %}
+  {% if site.supports.upyun %}
+  <section>
+    <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">本网站由提供 <img src="{{ "/assets/icons/upyun.png" | relative_url }}" class="upyun" /></span> CDN 加速/云存储服务</a>
+  </section>
+  {% endif %}
+</footer>
+<button id="list" aria-label="Scroll back to top" class="mobile-list" type="button">
+  <svg class="icon list day" aria-hidden="true">
+    <use xlink:href="#icon-list-day"></use>
+  </svg>
+  <svg class="icon list night" aria-hidden="true">
+    <use xlink:href="#icon-list-night"></use>
+  </svg>
+  <svg class="icon exit day" aria-hidden="true">
+    <use xlink:href="#icon-exit-day"></use>
+  </svg>
+  <svg class="icon exit night" aria-hidden="true">
+    <use xlink:href="#icon-exit-night"></use>
+  </svg>
+</button>
+<button id="bttb" aria-label="Scroll back to top" class="bttb" type="button">
+  <svg class="icon up day" aria-hidden="true">
+    <use xlink:href="#icon-up-day"></use>
+  </svg>
+  <svg class="icon up night" aria-hidden="true">
+    <use xlink:href="#icon-up-night"></use>
+  </svg>
+</button>
+
