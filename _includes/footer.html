@@ -1,16 +1,5 @@
 <footer class="g-footer">
-  <section>{{ site.title }} ©
-  {% assign current = "now" | date: "%Y" | plus: 0%}
-  {% unless site.footer.since and site.footer.since == current %}
-    {{ site.footer.since }}
-    -
-  {% endunless %}
-  {{ current }}
-  {% if site.beian %}
-    <a href="https://beian.miit.gov.cn/" target="_blank">{{ site.beian }}</a>
-  {% endif %}
-  </section>
-  <section>Powered by <a href="//jekyllrb.com">Jekyll</a> & <a href="https://github.com/zhonger/jekyll-theme-H2O-ac">H2O-ac</a> {% if site.version %}v{{ site.version }} {% endif %} (based on <a href="https://github.com/kaeyleo/jekyll-theme-H2O">H2O</a>) {% if site.supports.webify %} & <a href="https://webify.cloudbase.net/" target="_blank">CloudBase Webify</a> {% endif %}
+  <section>Salvador Enrique German Becerra</a> 
   {% if site.cnzz %}
   <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_{{ site.cnzz }}'%3E%3C/span%3E%3Cscript src='https://v1.cnzz.com/z_stat.php%3Fid%3D{{ site.cnzz }}%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
   {% endif %}
